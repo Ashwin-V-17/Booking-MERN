@@ -24,11 +24,12 @@ mongoose.connection.on("disconnected",()=>{
 mongoose.connection.on("connected",()=>{
     console.log("mongoDB connected!");
 })
+app.use(express.json());
 //middlewares
 app.use("/api/auth",authRoutes);
-app.use("/api/auth",usersRoutes);
-app.use("/api/auth",hotelsRoutes);
-app.use("/api/auth",roomsRoutes);
+app.use("/api/users",usersRoutes);
+app.use("/api/hotels",hotelsRoutes);
+app.use("/api/rooms",roomsRoutes);
 app.listen(8800,()=>{
     connect()
     console.log("connected to Backend");
