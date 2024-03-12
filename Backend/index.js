@@ -5,6 +5,7 @@ import authRoutes from "./routes/auth.js"
 import usersRoutes from "./routes/users.js"
 import hotelsRoutes from "./routes/hotels.js"
 import roomsRoutes from "./routes/rooms.js"
+import cookieParser from "cookie-parser";
 const app=express();
 dotenv.config()
 const connect = async ()=>{
@@ -24,6 +25,7 @@ mongoose.connection.on("disconnected",()=>{
 mongoose.connection.on("connected",()=>{
     console.log("mongoDB connected!");
 })
+app.use(cookieParser());
 app.use(express.json());
 //middlewares
 app.use("/api/auth",authRoutes);
